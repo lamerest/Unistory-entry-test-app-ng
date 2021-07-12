@@ -1,0 +1,37 @@
+.modal-window{
+  position: fixed;
+  width: 300px;
+  height: 130px;
+  top: calc(50vh - 100px);
+  left: calc(50vw - 150px);
+  z-index: 1000;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid grey;
+}
+.modal-window h3{
+  color: red;
+}
+.back{
+  position: fixed;
+  background-color: black;
+  opacity: 30%;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.block-buttons{
+  display: flex;
+  justify-content: space-between;
+}
+.button{
+  display: block;
+  width: 100px;
+  height: 30px;
+  background-color: cornflowerblue;
+}
+.delete-button{
+  background-color: indianred;
+}

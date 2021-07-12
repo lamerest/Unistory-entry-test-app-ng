@@ -1,0 +1,39 @@
+.modal-window{
+  width: 500px;
+  height: 330px;
+  z-index: 1000;
+  position: fixed;
+  top: calc(50vh - 165px);
+  left: calc(50vw - 250px);
+  padding: 20px;
+  background-color: white;
+}
+.back{
+  position: fixed;
+  background-color: black;
+  opacity: 30%;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+input, textarea{
+  width: 100%;
+  box-sizing: border-box;
+}
+textarea{
+  height: 150px;
+  resize: none;
+}
+.button{
+  display: block;
+  width: 100px;
+  height: 30px;
+  margin-left: 15px;
+}
+.block-buttons{
+  margin-top: 20px;
+  display: flex;
+  float: right;
+}

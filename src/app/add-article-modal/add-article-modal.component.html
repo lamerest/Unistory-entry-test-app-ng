@@ -1,0 +1,20 @@
+<div class="modal-window">
+
+  <h3>Новая запись</h3>
+
+  <label for="title">Заголовок</label>
+  <input [(ngModel)]="title" id="title" type="text">
+
+  <label for="text">Текст</label>
+  <textarea [(ngModel)]="text" id="text"></textarea>
+
+
+
+  <div class="block-buttons">
+    <button class="button" (click)="closeModalWindow()">Отмена</button>
+    <button class="button" (click)="addArticle()" type="submit">Сохранить</button>
+  </div>
+
+</div>
+
+<div class="back"></div>

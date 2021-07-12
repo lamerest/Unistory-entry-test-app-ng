@@ -1,0 +1,23 @@
+<div class="container" *ngIf="article" >
+
+  <button class="button" routerLink="/">Назад</button>
+
+  <h2>Запись "{{ title }}"</h2>
+
+
+  <label for="title">Заголовок</label>
+  <input [(ngModel)]="title" id="title" type="text">
+
+  <label for="text">Текст</label>
+  <textarea [(ngModel)]="text" id="text"></textarea>
+
+
+  <div class="block-buttons">
+    <button class="button delete-button" (click)="openModalWindow()">Удалить</button>
+    <button class="button" (click)="changeArticle(article)">Сохранить</button>
+  </div>
+
+</div>
+
+<app-confirmation-window [article]="article" (closeModal)="closeModalWindow()" *ngIf="isModalWindowVisible && article">
+</app-confirmation-window>

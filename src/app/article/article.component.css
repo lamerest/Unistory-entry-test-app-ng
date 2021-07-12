@@ -1,0 +1,25 @@
+.container{
+  max-width: 800px;
+  margin: auto;
+}
+input, textarea{
+  width: 100%;
+  box-sizing: border-box;
+}
+textarea{
+  min-height: 300px;
+  resize: none;
+}
+.block-buttons{
+  display: flex;
+  justify-content: space-between;
+}
+.button{
+  display: block;
+  width: 100px;
+  height: 30px;
+  background-color: cornflowerblue;
+}
+.delete-button{
+  background-color: indianred;
+}
