@@ -19,7 +19,7 @@ export class ArticleService {
   // Get prepared articles from articles.ts
   articles: Article[] = articles
 
-  // Id considering prepared articles from articles.ts
+  // Id consider prepared articles from articles.ts
   id = 6
 
   constructor() { }
@@ -30,23 +30,25 @@ export class ArticleService {
 
   // Add new article and increment id
   addArticle(title: string, text: string){
-    let article = {
+    this.id++
+    this.articles.unshift({
       id: this.id,
       title: title,
       text: text
-    }
-    this.id++
-    this.articles.unshift(article)
+    })
+    console.log(this.articles)
   }
 
   // Change existing article, replaces title and text with given args
   setArticle(article: Article, title: string, text: string){
     article.title = title
     article.text = text
+    console.log(this.articles)
   }
 
   // Deletes one given article from list
   deleteArticle(article: Article) {
     this.articles.splice(this.articles.indexOf(article), 1)
+    console.log(this.articles)
   }
 }

@@ -1,21 +1,27 @@
-<h2 class="header">Блог</h2>
+<h1 class="header">Блог</h1>
 
-<div class="blog">
 
-  <div *ngFor="let article of articles" class="article">
+<section class="blog">
+
+  <article *ngFor="let article of articles" class="article">
 
     <h3> {{ article.title }} </h3>
     <p> {{ article.text }} </p>
-
-    <a [routerLink]="'article/' + article.id" [title]="'Запись ' + article.title" >
+    <a [routerLink]="'article/' + article.id" [title]="'Запись ' + article.title">
       <button class="button">Перейти</button>
     </a>
 
-  </div>
+  </article>
 
-</div>
+  <button class="add-article-button" (click)="openModalWindow()">+ Добавить</button>
 
-<button class="add-article-button" (click)="openModalWindow()">+ Добавить</button>
 
-<!-- Modal window for adding new articles -->
-<app-add-article-modal (closeModal)="closeModalWindow()" *ngIf="isModalWindowVisible"></app-add-article-modal>
+  <!-- Modal window for adding new articles -->
+  <app-add-article-modal (closeModal)="closeModalWindow()"
+                         (articleProperties)="addArticle($event)"
+                         [openModal]="isModalWindowVisible">
+  </app-add-article-modal>
+
+</section>
+
+

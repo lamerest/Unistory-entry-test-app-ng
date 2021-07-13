@@ -1,6 +1,6 @@
-<div class="modal-window">
+<dialog [open]="openModal" class="modal-window">
 
-  <h3>Новая запись</h3>
+  <h2>Новая запись</h2>
 
   <label for="title">Заголовок</label>
   <input [(ngModel)]="title" id="title" type="text">
@@ -9,12 +9,15 @@
   <textarea [(ngModel)]="text" id="text"></textarea>
 
 
-
   <div class="block-buttons">
-    <button class="button" (click)="closeModalWindow()">Отмена</button>
-    <button class="button" (click)="addArticle()" type="submit">Сохранить</button>
+    <button class="button" (click)="closeModal.emit(false)">
+      Отмена
+    </button>
+    <button class="button" (click)="checkInputs()">
+      Сохранить
+    </button>
   </div>
 
-</div>
+</dialog>
 
-<div class="back"></div>
+

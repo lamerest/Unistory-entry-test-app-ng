@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { ArticleService } from "../article.service";
 
 @Component({
@@ -6,40 +6,32 @@ import { ArticleService } from "../article.service";
   templateUrl: './add-article-modal.component.html',
   styleUrls: ['./add-article-modal.component.css']
 })
-export class AddArticleModalComponent implements OnInit {
+export class AddArticleModalComponent {
 
   /* ADD-ARTICLE-MODAL */
-  // Defines modal window for creating new article using ArticleService
+  // Defines modal window for getting title and text for new article
   // Used as child in blog.component
 
-  // Title and text for new article
-  title: string = ""
-  text: string = ""
+  // Properties for new article
+  title: string = ''
+  text: string = ''
+
+  // Gets boolean to open modal window
+  @Input() openModal: boolean = false
 
   // Sends boolean to close modal window
   @Output() closeModal = new EventEmitter<boolean>()
 
-  constructor(
-    private articleService: ArticleService,
-  ) { }
+  // Sends inputs from window to parent to create new article
+  @Output() articleProperties = new EventEmitter<any>()
 
-  ngOnInit(): void {
-  }
-
-  // Check if title and text are empty, if not, creates a new article, else alerts user
-  addArticle(): void{
-
+  // Check if inputs are empty, then sends properties to parent
+  checkInputs(){
     if (this.title && this.text){
-
-      this.articleService.addArticle(this.title, this.text)
-      this.closeModalWindow()
-
-    } else window.alert("Пожалуйста, заполните все поля.")
-
+      this.articleProperties.emit([this.title, this.text])
+      // Need to
+      this.title = ''
+      this.text = ''
+    } else window.alert("Пожалуйста, заполните все поля!")
   }
-
-  closeModalWindow(){
-    this.closeModal.emit(false)
-  }
-
 }

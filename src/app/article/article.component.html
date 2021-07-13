@@ -1,4 +1,4 @@
-<div class="container" *ngIf="article" >
+<section class="container" *ngIf="article">
 
   <button class="button" routerLink="/">Назад</button>
 
@@ -17,7 +17,10 @@
     <button class="button" (click)="changeArticle(article)">Сохранить</button>
   </div>
 
-</div>
+  <app-confirmation-window (deleteConfirmed)="deleteArticle(article)"
+                           (closeModal)="closeModalWindow()"
+                            *ngIf="isModalWindowVisible">
+  </app-confirmation-window>
+</section>
 
-<app-confirmation-window [article]="article" (closeModal)="closeModalWindow()" *ngIf="isModalWindowVisible && article">
-</app-confirmation-window>
+

@@ -1,41 +1,18 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import { ArticleService } from "../article.service";
-import { Article } from "../articles";
-import { Router } from "@angular/router";
+import {Component, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-confirmation-window',
   templateUrl: './confirmation-window.component.html',
   styleUrls: ['./confirmation-window.component.css']
 })
-export class ConfirmationWindowComponent implements OnInit {
+export class ConfirmationWindowComponent {
 
   /* CONFIRMATION-WINDOW
-  * Modal window with confirmation of article deletion
-  *
-  * Functionality:
-  * - delete article
-  *
-  * Parent:
-  * article.component */
+  * Modal window with confirmation of article deletion */
 
-  // Gets deleting article
-  @Input() article: Article|undefined
+  // Send signal to close modal window
+  @Output() closeModal = new EventEmitter<any>()
 
-  // Send boolean to parent to close modal window
-  @Output() closeModal = new EventEmitter<boolean>()
-
-  constructor(
-    private articleService: ArticleService,
-    private router: Router
-  ) { }
-
-  ngOnInit(): void {
-  }
-
-  // Deletes article using ArticleService and returns user to Blog page
-  deleteArticle(article: Article){
-    this.articleService.deleteArticle(article)
-    this.router.navigate(['/'])
-  }
+  // Send confirmation to delete article
+  @Output() deleteConfirmed = new EventEmitter<any>()
 }

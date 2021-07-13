@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from "@angular/forms";
 import { ArticleService } from "../article.service";
 import { Article } from "../articles";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-article',
@@ -22,7 +21,9 @@ export class ArticleComponent implements OnInit {
   * confirmation-window - modal window to confirm deleting article
   *
   * closeModalWindow() -  hides modal window
-  * openModalWindow()  -  shows modal window */
+  * openModalWindow()  -  shows modal window
+  * changeArticle(article: Article, title: string, text: string) - edit article with given title and text
+  * deleteArticle(article: Article) - delete given article */
 
   article: Article | undefined
   isModalWindowVisible: boolean = false
@@ -32,8 +33,8 @@ export class ArticleComponent implements OnInit {
   text: string = ""
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
     private articleService: ArticleService,
   ) { }
 
@@ -51,7 +52,6 @@ export class ArticleComponent implements OnInit {
       this.title = this.article.title
       this.text = this.article.text
     }
-
   }
 
   // Check fields if they are empty and saves article, otherwise alerts user
@@ -63,6 +63,12 @@ export class ArticleComponent implements OnInit {
       this.articleService.setArticle(article, this.title, this.text)
     } else window.alert("Пожалуйста, заполните все поля")
 
+  }
+
+  // Deletes article using ArticleService and returns user to Blog page
+  deleteArticle(article: Article){
+    this.articleService.deleteArticle(article)
+    this.router.navigate(['/'])
   }
 
   closeModalWindow(){

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ArticleService } from "../article.service";
 
 @Component({
@@ -6,7 +6,7 @@ import { ArticleService } from "../article.service";
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.css']
 })
-export class BlogComponent implements OnInit {
+export class BlogComponent {
 
   /* BLOG
   * Page with list of articles from ArticleService
@@ -21,6 +21,7 @@ export class BlogComponent implements OnInit {
   *
   * closeModalWindow() - hides modal window
   * openModalWindow() - shows modal window
+  * addArticle() - creates new Article throw ArticleService
   * */
 
   articles = this.articleService.getArticles()
@@ -32,15 +33,20 @@ export class BlogComponent implements OnInit {
     private articleService: ArticleService,
   ) { }
 
-  ngOnInit(): void {
-  }
-
   public closeModalWindow(){
     this.isModalWindowVisible = false
   }
 
   public openModalWindow(){
     this.isModalWindowVisible = true
+  }
+
+  // Check if title and text are empty, if not, creates a new article, else alerts user
+  addArticle(props: string[]){
+    if (props[0] && props[1]){
+      this.articleService.addArticle(props[0], props[1])
+      this.isModalWindowVisible = false
+    }
   }
 
 }

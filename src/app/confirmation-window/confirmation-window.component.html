@@ -1,10 +1,14 @@
-<div class="modal-window" *ngIf="article">
+<div class="modal-window">
+
   <h3>Удаление записи</h3>
   <p>Вы уверены, что хотите удалить запись?</p>
   <div class="block-buttons">
     <button class="button" (click)="closeModal.emit()">Отмена</button>
-    <button class="button delete-button" (click)="deleteArticle(article)">Удалить</button>
+    <button class="button delete-button" (click)="deleteConfirmed.emit()">Удалить</button>
   </div>
+
 </div>
 
 <div class="back"></div>
+
+
