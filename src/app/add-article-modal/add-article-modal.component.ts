@@ -16,8 +16,7 @@ export class AddArticleModalComponent {
   title: string = ''
   text: string = ''
 
-  // Gets boolean to open modal window
-  @Input() openModal: boolean = false
+  alertMessage: boolean = false
 
   // Sends boolean to close modal window
   @Output() closeModal = new EventEmitter<boolean>()
@@ -29,9 +28,6 @@ export class AddArticleModalComponent {
   checkInputs(){
     if (this.title && this.text){
       this.articleProperties.emit([this.title, this.text])
-      // Need to
-      this.title = ''
-      this.text = ''
-    } else window.alert("Пожалуйста, заполните все поля!")
+    } else this.alertMessage = true
   }
 }

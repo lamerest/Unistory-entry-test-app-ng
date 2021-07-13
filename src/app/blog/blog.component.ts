@@ -43,10 +43,8 @@ export class BlogComponent {
 
   // Check if title and text are empty, if not, creates a new article, else alerts user
   addArticle(props: string[]){
-    if (props[0] && props[1]){
-      this.articleService.addArticle(props[0], props[1])
-      this.isModalWindowVisible = false
-    }
+    this.articleService.addArticle(props[0], props[1])
+    this.closeModalWindow()
   }
 
 }

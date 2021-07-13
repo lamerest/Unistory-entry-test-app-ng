@@ -27,6 +27,7 @@ export class ArticleComponent implements OnInit {
 
   article: Article | undefined
   isModalWindowVisible: boolean = false
+  saveMessageVisible: boolean = false
 
   // Title and text used for changing article
   title: string = ""
@@ -56,13 +57,11 @@ export class ArticleComponent implements OnInit {
 
   // Check fields if they are empty and saves article, otherwise alerts user
   changeArticle(article: Article){
-
     if (this.title && this.text){
-      window.alert("Изменения сохранены.")
-
+      this.saveMessageVisible = true
       this.articleService.setArticle(article, this.title, this.text)
-    } else window.alert("Пожалуйста, заполните все поля")
-
+    } else
+      window.alert("Пожалуйста, заполните все поля")
   }
 
   // Deletes article using ArticleService and returns user to Blog page

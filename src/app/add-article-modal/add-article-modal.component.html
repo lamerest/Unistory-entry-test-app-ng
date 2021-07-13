@@ -1,7 +1,7 @@
-<dialog [open]="openModal" class="modal-window">
+<div class="modal-window">
 
   <h2>Новая запись</h2>
-
+  <p *ngIf="alertMessage" class="alert">Заполните все поля!</p>
   <label for="title">Заголовок</label>
   <input [(ngModel)]="title" id="title" type="text">
 
@@ -18,6 +18,8 @@
     </button>
   </div>
 
-</dialog>
+</div>
+<div class="back"></div>
+
 
 

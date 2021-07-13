@@ -19,7 +19,7 @@
   <!-- Modal window for adding new articles -->
   <app-add-article-modal (closeModal)="closeModalWindow()"
                          (articleProperties)="addArticle($event)"
-                         [openModal]="isModalWindowVisible">
+                         *ngIf="isModalWindowVisible">
   </app-add-article-modal>
 
 </section>

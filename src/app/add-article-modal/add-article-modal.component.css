@@ -1,12 +1,13 @@
 .modal-window{
   width: 500px;
-  height: 330px;
+  height: 360px;
   z-index: 1000;
   position: fixed;
   top: calc(50vh - 165px);
   left: calc(50vw - 250px);
   padding: 20px;
   background-color: white;
+  border: black 3px solid;
 }
 .back{
   position: fixed;
@@ -36,4 +37,8 @@ textarea{
   margin-top: 20px;
   display: flex;
   float: right;
+}
+.alert{
+  color: red;
+  margin: 0 0 10px 0;
 }

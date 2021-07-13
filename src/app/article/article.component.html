@@ -6,16 +6,18 @@
 
 
   <label for="title">Заголовок</label>
-  <input [(ngModel)]="title" id="title" type="text">
+  <input [(ngModel)]="title" (ngModelChange)="saveMessageVisible=false" id="title" type="text">
 
   <label for="text">Текст</label>
-  <textarea [(ngModel)]="text" id="text"></textarea>
+  <textarea [(ngModel)]="text" (ngModelChange)="saveMessageVisible=false" id="text"></textarea>
 
 
   <div class="block-buttons">
     <button class="button delete-button" (click)="openModalWindow()">Удалить</button>
     <button class="button" (click)="changeArticle(article)">Сохранить</button>
   </div>
+
+  <p *ngIf="saveMessageVisible" class="save">Успешно сохранено!</p>
 
   <app-confirmation-window (deleteConfirmed)="deleteArticle(article)"
                            (closeModal)="closeModalWindow()"

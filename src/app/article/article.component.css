@@ -23,3 +23,6 @@ textarea{
 .delete-button{
   background-color: indianred;
 }
+.save{
+  color: limegreen;
+}
